@@ -1,0 +1,298 @@
+Database- Day -2: MySQL 
+Task
+Design DB model for Guvi Zen class (This is a task details)
+
+>>>>>>>> database created
+
+mysql> use guvi_zen_class;
+Database changed
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| guvi_zen_class     |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+>>>>>>>>> create tables
+
+mysql> create table class ();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table class (id int AUTO_INCREMENT primary key, topic text );
+Query OK, 0 rows affected (1.52 sec)
+
+mysql> create table dashboard (id int AUTO_INCREMENT primary key, studentName varchar(30), batch text, webkata text, codekata text, totalClass int, presented int, absents int );
+Query OK, 0 rows affected (0.62 sec)
+
+mysql> create table task (id int AUTO_INCREMENT primary key, totaltasks int, completedTasks int, pendingTasks int);
+Query OK, 0 rows affected (1.62 sec)
+
+mysql> create table webcode (id int AUTO_INCREMENT primary key, website varchar(200));
+Query OK, 0 rows affected (1.29 sec)
+
+mysql> create table capstone (id AUTO_INCREMENT primary key, capstonePosition int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO_INCREMENT primary key, capstonePosition int)' at line 1
+mysql> create table capstone (id int AUTO_INCREMENT primary key, capstonePosition int);
+Query OK, 0 rows affected (1.53 sec)
+
+mysql> create table queries (id int AUTO_INCREMENT primary key, title varchar(100), details varchar(1000), totalQueries  int, completedQueries int, pendingQueries int);
+Query OK, 0 rows affected (1.41 sec)
+
+mysql> create table requirements (id int AUTO_INCREMENT primary key, reqDetails varchar(200));
+Query OK, 0 rows affected (0.55 sec)
+
+mysql> create table portfolio (id int AUTO_INCREMENT primary key, pfStatus varchar(20), pfUrl varchar(200));
+Query OK, 0 rows affected (1.14 sec)
+
+mysql> create table application (id int AUTO_INCREMENT primary key, appTitle varchar(100), appTotal int, appconsidered int, appRejected int);
+Query OK, 0 rows affected (1.17 sec)
+
+mysql> create table interviewTasks (id int AUTO_INCREMENT primary key, interviewTasksTotal int, totalSubmissions int, pending int);
+Query OK, 0 rows affected (1.56 sec)
+
+mysql> create table leaveApplications (id int AUTO_INCREMENT primary key, totalLeaveApplications int, granted int, rejected int, pending int);
+Query OK, 0 rows affected (0.70 sec)
+
+mysql> create table mockInterview (id int AUTO_INCREMENT primary key, totalMockInterview int, totalScored int, remarks varchar(200));
+Query OK, 0 rows affected (0.70 sec)
+
+mysql> create table certificate (id int AUTO_INCREMENT primary key, certificateURL varchar(200), status varchar(200) );
+Query OK, 0 rows affected (1.59 sec)
+
+mysql> create table testimonial (id int AUTO_INCREMENT primary key, details varchar(2000), result varchar(100));
+Query OK, 0 rows affected (1.09 sec)
+
+mysql> create table leaderBoard (id int AUTO_INCREMENT primary key, rankDetails int, name varchar(30), batch varchar(30), score int );
+Query OK, 0 rows affected (0.77 sec)
+
+mysql> create table syllabus (id int AUTO_INCREMENT primary key, details varchar(500));
+Query OK, 0 rows affected (1.13 sec)
+
+mysql> create table placementBoard (id int AUTO_INCREMENT primary key, placementStatus varchar(300));
+Query OK, 0 rows affected (1.03 sec)
+
+mysql> insert into class (topic) values ("Road Map Day - 33. MySQL day - 2");
+Query OK, 1 row affected (0.67 sec)
+
+>>>>>>>>>  display each tables 
+
+mysql> select * from class;
++----+----------------------------------+
+| id | topic                            |
++----+----------------------------------+
+|  1 | Road Map Day - 33. MySQL day - 2 |
++----+----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into dashboard(studentName, batch, webkata, codekata, totalClass, presented, absents) values ("Govindaraj N", "B53 WD4 TAMIL", "Completed HTML", "Pursing Array", 100, 99, 1 );
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from dashboard;
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+
+| id | studentName  | batch         | webkata        | codekata      | totalClass | presented | absents |
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+
+|  1 | Govindaraj N | B53 WD4 TAMIL | Completed HTML | Pursing Array |        100 |        99 |       1 |
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into task (totaltasks, completedTasks, pendingTasks) values (20, 16, 4);
+Query OK, 1 row affected (0.18 sec)
+
+mysql> select * from task;
++----+------------+----------------+--------------+
+| id | totaltasks | completedTasks | pendingTasks |
++----+------------+----------------+--------------+
+|  1 |         20 |             16 |            4 |
++----+------------+----------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> insert into webcode(website) values ("https://github.com/");
+Query OK, 1 row affected (0.20 sec)
+
+mysql> select * from webcode;
++----+---------------------+
+| id | website             |
++----+---------------------+
+|  1 | https://github.com/ |
++----+---------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into capstone (capstonePosition) values (6);
+Query OK, 1 row affected (0.21 sec)
+
+mysql> select * from capstone;
++----+------------------+
+| id | capstonePosition |
++----+------------------+
+|  1 |                6 |
++----+------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into queries (title, details, totalQueries, completedQueries, pendingQueries) values ("About Task", "Request you please give some more clarifications about task", 30, 29, 1);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from queries;
++----+------------+-------------------------------------------------------------+--------------+------------------+----------------+
+| id | title      | details                                                     | totalQueries | completedQueries | pendingQueries |
++----+------------+-------------------------------------------------------------+--------------+------------------+----------------+
+|  1 | About Task | Request you please give some more clarifications about task |           30 |               29 |              1 |
++----+------------+-------------------------------------------------------------+--------------+------------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> insert into requirements (reqDetails) values ("Position: frontend developer, Experience: 3years, TechSkills: javascript, C++, Java, Python, MongoDB, nodejs, react, Salary:3.5L, close Date: 20/02/2024");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from requirements;
++----+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| id | reqDetails                                                                                                                                               |
++----+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+|  1 | Position: frontend developer, Experience: 3years, TechSkills: javascript, C++, Java, Python, MongoDB, nodejs, react, Salary:3.5L, close Date: 20/02/2024 |
++----+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into portfolio (pfStatus, pfUrl) values ("Sbmitted", "www.gowindcode.com");
+Query OK, 1 row affected (0.24 sec)
+
+mysql> select * from portfolio;
++----+----------+--------------------+
+| id | pfStatus | pfUrl              |
++----+----------+--------------------+
+|  1 | Sbmitted | www.gowindcode.com |
++----+----------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into application(appTitle, appTotal, appconsidered, appRejected) values ("Fullstack Develpoer", 4, 3, 0);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from application;
++----+---------------------+----------+---------------+-------------+
+| id | appTitle            | appTotal | appconsidered | appRejected |
++----+---------------------+----------+---------------+-------------+
+|  1 | Fullstack Develpoer |        4 |             3 |           0 |
++----+---------------------+----------+---------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> insert into interviewTasks (interviewTasksTotal, totalSubmissions, pending) values (4, 4, 0);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from interviewTasks;
++----+---------------------+------------------+---------+
+| id | interviewTasksTotal | totalSubmissions | pending |
++----+---------------------+------------------+---------+
+|  1 |                   4 |                4 |       0 |
++----+---------------------+------------------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into leaveApplications (totalLeaveApplications, granted, rejected, pending) values (1, 1, 0, 0);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> select * from leaveApplications;
++----+------------------------+---------+----------+---------+
+| id | totalLeaveApplications | granted | rejected | pending |
++----+------------------------+---------+----------+---------+
+|  1 |                      1 |       1 |        0 |       0 |
++----+------------------------+---------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into mockInterview(totalMockinterview, totalScored, remarks) values (2, 2.5, "should improve communications and tecnical discussions. ");
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from mockInterview;
++----+--------------------+-------------+----------------------------------------------------------+
+| id | totalMockInterview | totalScored | remarks                                                  |
++----+--------------------+-------------+----------------------------------------------------------+
+|  1 |                  2 |           3 | should improve communications and tecnical discussions.  |
++----+--------------------+-------------+----------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into certificate (certificateURL, status) values ("www.guvi.zenclass.certificates.com/govindaraj_n0039", "certificate issued for MERN");
+Query OK, 1 row affected (0.20 sec)
+
+mysql> select * from certificate;
++----+-----------------------------------------------------+-----------------------------+
+| id | certificateURL                                      | status                      |
++----+-----------------------------------------------------+-----------------------------+
+|  1 | www.guvi.zenclass.certificates.com/govindaraj_n0039 | certificate issued for MERN |
++----+-----------------------------------------------------+-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into testimonial (details, result) values ("waiting for the course completion and it will updated soon in zen portal","not provided");
+Query OK, 1 row affected (0.18 sec)
+
+mysql> select * from testimonial;
++----+--------------------------------------------------------------------------+--------------+
+| id | details                                                                  | result       |
++----+--------------------------------------------------------------------------+--------------+
+|  1 | waiting for the course completion and it will updated soon in zen portal | not provided |
++----+--------------------------------------------------------------------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> insert into leaderBoard (rankDetails, name, batch, score) values (6, "Govindaraj N", "B53 WD4 Tamil", 41);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> select * from leaderBoard;
++----+-------------+--------------+---------------+-------+
+| id | rankDetails | name         | batch         | score |
++----+-------------+--------------+---------------+-------+
+|  1 |           6 | Govindaraj N | B53 WD4 Tamil |    41 |
++----+-------------+--------------+---------------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into syllabus (details) values ("React, JavaScript, CSS, MySQL and MongoDB, nodeJS");
+Query OK, 1 row affected (0.58 sec)
+
+mysql> select * from syllabus;
++----+---------------------------------------------------+
+| id | details                                           |
++----+---------------------------------------------------+
+|  1 | React, JavaScript, CSS, MySQL and MongoDB, nodeJS |
++----+---------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into placementBoard(placementStatus) values ("course pursing, so after interview will allocate");
+Query OK, 1 row affected (0.21 sec)
+
+mysql> select * from placementBoard;
++----+--------------------------------------------------+
+| id | placementStatus                                  |
++----+--------------------------------------------------+
+|  1 | course pursing, so after interview will allocate |
++----+--------------------------------------------------+
+1 row in set (0.00 sec)
+
+
+>>>>>>>>> join two tables inner join
+
+
+mysql> select * from dashboard inner join task;
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+----+------------+----------------+--------------+
+| id | studentName  | batch         | webkata        | codekata      | totalClass | presented | absents | id | totaltasks | completedTasks | pendingTasks |
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+----+------------+----------------+--------------+
+|  1 | Govindaraj N | B53 WD4 TAMIL | Completed HTML | Pursing Array |        100 |        99 |       1 |  1 |         20 |             16 |            4 |
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+----+------------+----------------+--------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> select * from dashboard inner join task where completedTasks;
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+----+------------+----------------+--------------+
+| id | studentName  | batch         | webkata        | codekata      | totalClass | presented | absents | id | totaltasks | completedTasks | pendingTasks |
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+----+------------+----------------+--------------+
+|  1 | Govindaraj N | B53 WD4 TAMIL | Completed HTML | Pursing Array |        100 |        99 |       1 |  1 |         20 |             16 |            4 |
++----+--------------+---------------+----------------+---------------+------------+-----------+---------+----+------------+----------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from task inner join leaderBoard;
++----+------------+----------------+--------------+----+-------------+--------------+---------------+-------+
+| id | totaltasks | completedTasks | pendingTasks | id | rankDetails | name         | batch         | score |
++----+------------+----------------+--------------+----+-------------+--------------+---------------+-------+
+|  1 |         20 |             16 |            4 |  1 |           6 | Govindaraj N | B53 WD4 Tamil |    41 |
++----+------------+----------------+--------------+----+-------------+--------------+---------------+-------+
+1 row in set (0.00 sec)
+
+mysql> \q; (exit from mysql cmd)...
